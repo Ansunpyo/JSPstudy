@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 예제</title>
+<style>
+	div {
+		width: 200px;
+		height: 200px;
+		background: orange;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<button id="fiBtn">fadeIn</button>
+	<button id="foBtn">fadeOut</button>
+	<button id="ftBtn">fadeToggle</button>
+	<button id="ftoBtn">fadeTo(0.5)</button>
+	<div></div>
+	<p>div의 display 상태 :<span></span></p>
+	<!--  script add -->
+<script>
+	$(function() {
+		$("#fiBtn").click(function() {
+			$("div").fadeIn();
+			$("span").ep(0).text($("div").eq(0).css("display"));
+		});
+		$("#foBtn").click(function(){
+			$("div").fadeOut();
+			$("span").ep(0).text($("div").eq(0).css("display"));
+		});
+		$("#ftBtn").click(function(){
+			$("div").fadeToggle();
+			$("span").ep(0).text($("div").eq(0).css("display"));
+		});
+		$("#ftoBtn").click(function(){
+			$("div").fadeTo(2000, 0.5);
+			$("span").ep(0).text($("div").eq(0).css("opacity"));
+		});
+	});
+</script>
+</body>
+</html>

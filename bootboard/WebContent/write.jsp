@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String id = (String) session.getAttribute("userId");
+	if(id == null) {
+		response.sendRedirect("bbs.jsp");
+	}
+%>
 <!doctype html>
 <html>
 <head>
@@ -18,19 +24,14 @@
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
 			aria-label="Toggle navigation">
-			<!--class="navbar-toggle"  : bootstrap에 저장된 햄버거 모양 사용
-				data-toggle="collapse" : 클릭을 통해 보이기/숨기기(<button> 또는 <a>코드 요소 추가
-				data-target="#navbarSupportedContent" : 필수(없으니까 안펼쳐짐)
-				aria 태그 : 선생님께 질문
-			-->
-			<span class="navbar-toggler-icon"></span><!-- 햄버거 버튼 모양 -->
+			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link" href="main.jsp">메인</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="bbs.jsp">게시판</a>
-				</li>
+				<li class="nav-item"><a class="nav-link active" href="bbs.jsp">게시판</a>
+					<span class="sr-only">(current)</span></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item dropdown"><a
@@ -38,36 +39,42 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> 접속하기 </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item active" href="login.jsp">로그인<span
-							class="sr-only">(current)</span></a>
+						<a class="dropdown-item active" href="login.jsp">로그인</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="join.jsp">회원가입</a>
+						<a class="dropdown-item" href="logoutAction.jsp">로그아웃</a>
 					</div></li>
 			</ul>
 		</div>
 	</nav>
 	<div class="container pt-3">
-		<div class="row">
-			<div class="col-lg-4 offset-lg-4">
-				<div class="jumbotron pt-5">
-					<form method="post" action="loginAction.jsp">
-						<h3 class="text-center pb-2">JSP 게시판</h3>
-						<div class="form-group">
-							<input type="text" class="form-control" name="userId"
-								placeholder="아이디" maxlength="20" />
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" name="userPassword"
-								placeholder="비밀번호" maxlength="20" />
-						</div>
-						<button type="submit" class="btn btn-primary form-control">로그인</button>
-					</form>
-				</div>
-			</div>
-		</div>
+		<form method="post" action="writeAction.jsp">
+			<table class="table table-striped text-center">
+				<thead class="thead-light">
+					<tr>
+						<th>게시판 글쓰기</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" class="form-control"
+							placeholder="글 제목" name="bbsTitle" maxlength="50" /></td>
+					</tr>
+					<tr>
+						<td><textarea class="form-control" placeholder="글 내용"
+								name="bbsContent" maxlength="2048"
+								style="height: 350px; resize: none;"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="bbs.jsp" class="btn btn-success float-left">목록</a>
+			<button type="submit" class="btn btn-primary float-right">글쓰기</button>
+		</form>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -24,7 +24,12 @@
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
 			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
+			<!--class="navbar-toggle"  : bootstrap에 저장된 햄버거 모양 사용
+				data-toggle="collapse" : 클릭을 통해 보이기/숨기기(<button> 또는 <a>코드 요소 추가
+				data-target="#navbarSupportedContent" : 필수(없으니까 안펼쳐짐)
+				aria 태그 : 선생님께 질문
+			-->
+			<span class="navbar-toggler-icon"></span><!-- 햄버거 버튼 모양 -->
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav">
@@ -39,11 +44,13 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> 접속하기 </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item active" href="login.jsp">로그인</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="join.jsp">회원가입<span
+						<a class="dropdown-item active" href="login.jsp">로그인<span
 							class="sr-only">(current)</span></a>
-					</div></li>
+						<a class="dropdown-item" href="logoutAction.jsp" id="logoutBtn">로그아웃</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="join.jsp" id="loginBtn">회원가입</a>						
+					</div>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -51,46 +58,24 @@
 		<div class="row">
 			<div class="col-lg-4 offset-lg-4">
 				<div class="jumbotron pt-5">
-					<form method="post" action="joinAction.jsp">
-						<h3 class="text-center pb-2">회원가입</h3>
+					<form method="post" action="loginAction.jsp">
+						<h3 class="text-center pb-2">JSP 게시판</h3>
 						<div class="form-group">
 							<input type="text" class="form-control" name="userId"
 								placeholder="아이디" maxlength="20" />
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" name="userPassword"
-								placeholder="비밀번호" maxlength="20" required="required"/>
+								placeholder="비밀번호" maxlength="20" />
 						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" name="userName"
-								placeholder="이름" maxlength="20" required="required"/>
-						</div>
-						<div class="form-group text-center">
-							<div class="btn-group" data-toggle="buttons">
-								<label class="btn btn-primary active">
-									<input class="d-none" type="radio" name="userGender"
-										autocomplete="off" value="남자" checked="checked"/>남자
-								</label>
-								<label class="btn btn-primary active">
-									<input class="d-none" type="radio" name="userGender"
-										autocomplete="off" value="여자"/>여자
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-							<input type="email" class="form-control" name="userEmail"
-								placeholder="이메일" maxlength="20" required="required"/>
-						</div>
-						<button type="submit" class="btn btn-primary form-control">가입</button>
+						<button type="submit" class="btn btn-primary form-control">로그인</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
